@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Job Details</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f6f6fa;
+      margin: 0;
+    }
+    .header {
+      background: #fff;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .header-title {
+      font-size: 18px;
+      font-weight: 500;
+      margin-right: 40px;
+      color: #22223b;
+    }
+    .hero-section {
+      background: #111;
+      color: #fff;
+      padding: 48px 0 32px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+    }
+    .hero-content {
+      margin-left: 120px;
+      max-width: 700px;
+    }
+    .back-arrow {
+      font-size: 28px;
+      cursor: pointer;
+      margin-bottom: 24px;
+      display: inline-block;
+    }
+    .job-title {
+      font-size: 38px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+    .job-meta-row {
+      display: flex;
+      gap: 32px;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .job-meta-row span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      font-size: 18px;
+    }
+    .job-meta-row .icon {
+      font-size: 18px;
+    }
+    .main-content {
+      display: flex;
+      gap: 40px;
+      padding: 0 120px;
+      margin-top: 40px;
+    }
+    .job-details {
+      flex: 2;
+      background: transparent;
+      padding-top: 32px;
+    }
+    .tabs {
+      display: flex;
+      gap: 40px;
+      border-bottom: 2px solid #e2e2e2;
+      margin-bottom: 24px;
+    }
+    .tab {
+      font-size: 20px;
+      font-weight: 500;
+      padding-bottom: 8px;
+      cursor: pointer;
+      color: #22223b;
+      border: none;
+      background: none;
+      outline: none;
+      position: relative;
+    }
+    .tab.active {
+      color: #111;
+    }
+    .tab.active::after {
+      content: '';
+      display: block;
+      height: 3px;
+      background: #fff;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      border-radius: 2px;
+      background: #111;
+    }
+    .tab-content {
+      margin-top: 32px;
+    }
+    .tab-content .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #22223b;
+    }
+    .tab-content .section-desc {
+      font-size: 15px;
+      color: #22223b;
+      margin-bottom: 18px;
+    }
+    .apply-btn {
+      margin-top: 32px;
+      padding: 10px 28px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+      background: #111;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: background 0.2s;
+    }
+    .apply-btn:hover {
+      background: #22223b;
+    }
+    .sidebar {
+      flex: 1;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 32px 28px;
+      margin-top: 0;
+      min-width: 320px;
+      max-width: 340px;
+      height: fit-content;
+    }
+    .sidebar-row {
+      margin-bottom: 18px;
+    }
+    .sidebar-label {
+      font-size: 13px;
+      color: #888;
+      font-weight: 500;
+      margin-bottom: 2px;
+      display: block;
+    }
+    .sidebar-value {
+      font-size: 16px;
+      color: #22223b;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .sidebar-divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 18px 0;
+    }
+    .sidebar-share {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .sidebar-share .icon {
+      font-size: 18px;
+      color: #22223b;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .sidebar-share .icon:hover {
+      color: #1677ff;
+    }
+    .footer {
+      background: #fff;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #888;
+      margin-top: 60px;
+    }
+    @media (max-width: 900px) {
+      .main-content {
+        flex-direction: column;
+        padding: 0 16px;
+      }
+      .hero-content {
+        margin-left: 16px;
+      }
+      .sidebar {
+        margin-top: 32px;
+        min-width: unset;
+        max-width: unset;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="header-title">Careers</span>
+  </div>
+  <div class="hero-section">
+    <div class="hero-content">
+      <span class="back-arrow" onclick="window.history.back()">&#8592;</span>
+      <div class="job-title">
+        Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit.
+      </div>
+      <div class="job-meta-row">
+        <span><span class="icon">&#128205;</span> Location</span>
+        <span><span class="icon">&#9201;</span> Experience</span>
+        <span><span class="icon">&#128188;</span> Employment Type</span>
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="job-details">
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('overview')">Overview</button>
+        <button class="tab" onclick="showTab('application')">Application</button>
+      </div>
+      <div id="overview" class="tab-content">
+        <div class="section-title">JOB DESCRIPTION</div>
+        <div class="section-desc">Check the description</div>
+        <div class="section-title">JOB REQUIREMENTS</div>
+        <div class="section-desc">Check the requirements</div>
+        <div class="section-title">QUALIFICATIONS</div>
+        <div class="section-desc">Check the qualifications</div>
+        <div class="section-title">ABOUT US</div>
+        <div class="section-desc">Check the about us</div>
+        <button class="apply-btn">Apply for this position <span>&#8250;</span></button>
+      </div>
+      <div id="application" class="tab-content" style="display:none;">
+        <div class="section-title">APPLICATION</div>
+        <div class="section-desc">Application form or instructions go here.</div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="sidebar-row">
+        <span class="sidebar-label">COMPENSATION</span>
+        <span class="sidebar-value">67890 ( Monthly )</span>
+      </div>
+      <div class="sidebar-row">
+        <span class="sidebar-label">DEPARTMENT</span>
+        <span class="sidebar-value">-</span>
+      </div>
+      <div class="sidebar-row">
+        <span class="sidebar-label">LEVEL</span>
+        <span class="sidebar-value">-</span>
+      </div>
+      <div class="sidebar-row">
+        <span class="sidebar-label">APPLICATION ENDS</span>
+        <span class="sidebar-value">September 14, 2025</span>
+      </div>
+      <hr class="sidebar-divider"/>
+      <div class="sidebar-row">
+        <span class="sidebar-label">BENEFITS</span>
+        <span class="sidebar-value">-</span>
+      </div>
+      <hr class="sidebar-divider"/>
+      <div class="sidebar-label">SHARE</div>
+      <div class="sidebar-share">
+        <span class="icon">&#128081;</span>
+        <span class="icon">&#128100;</span>
+        <span class="icon">&#128214;</span>
+        <span class="icon">&#128187;</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    Powered by
+  </div>
+  <script>
+    function showTab(tab) {
+      document.getElementById('overview').style.display = tab === 'overview' ? 'block' : 'none';
+      document.getElementById('application').style.display = tab === 'application' ? 'block' : 'none';
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      if(tab === 'overview') tabs[0].classList.add('active');
+      else tabs[1].classList.add('active');
+    }
+  </script>
+</body>
+</html>
